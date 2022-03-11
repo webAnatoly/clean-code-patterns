@@ -7,4 +7,9 @@ export class Office {
     constructor(options: IOffice) {
         this.office = { ...options }
     }
+
+    public computeCost(): number {
+        return (this.office.number * this.office.roomsAmount) /
+            (this.office.floorNumber * Math.sqrt(this.office.houseNumber + this.office.sectionNumber));
+    }
 }

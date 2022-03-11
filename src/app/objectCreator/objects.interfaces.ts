@@ -38,3 +38,7 @@ export interface IObjectBuilder {
     produceOffice(options: IOffice): void;
     produceGarage(options: IGarage): void;
 }
+
+export enum MathConstants {
+    E = 2.71828,
+}
