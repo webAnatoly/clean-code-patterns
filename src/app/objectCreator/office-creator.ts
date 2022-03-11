@@ -16,7 +16,9 @@ export class OfficeCreator implements IObjectBuilder {
 
     private product: Office | null = null;
 
-    constructor() { }
+    constructor() {
+        this.reset();
+    }
 
     public reset() {
         this.product = null;
@@ -33,6 +35,12 @@ export class OfficeCreator implements IObjectBuilder {
     }
 
     public produceGarage(options: IGarage): void {
+    }
+
+    public getProduct(): Office | null {
+        const result = this.product;
+        this.reset();
+        return result;
     }
 
 }

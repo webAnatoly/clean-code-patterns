@@ -16,7 +16,9 @@ export class FlatCreator implements IObjectBuilder {
 
     private product: Flat | null = null;
 
-    constructor() { }
+    constructor() {
+        this.reset();
+    }
 
     public reset() {
         this.product = null;
@@ -33,5 +35,11 @@ export class FlatCreator implements IObjectBuilder {
     }
 
     public produceOffice(options: IOffice): void {
+    }
+
+    public getProduct(): Flat | null {
+        const result = this.product;
+        this.reset();
+        return result;
     }
 }

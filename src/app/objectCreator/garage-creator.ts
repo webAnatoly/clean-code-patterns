@@ -6,6 +6,7 @@ import {
     IOffice,
 } from './objects.interfaces';
 import { Garage } from './garage';
+import { Flat } from './flat';
 
 /**
  * Классы Конкретного Строителя следуют интерфейсу Строителя (в моём случае это интерфейс IObjectBuilder)
@@ -16,7 +17,9 @@ export class GarageCreator implements IObjectBuilder {
 
     private product: Garage | null = null;
 
-    constructor() { }
+    constructor() {
+        this.reset();
+    }
 
     public reset() {
         this.product = null;
@@ -33,6 +36,12 @@ export class GarageCreator implements IObjectBuilder {
     }
 
     public produceOffice(options: IOffice): void {
+    }
+
+    public getProduct(): Garage | null {
+        const result = this.product;
+        this.reset();
+        return result;
     }
 
 }

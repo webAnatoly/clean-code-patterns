@@ -2,14 +2,28 @@ import { IOffice } from './objects.interfaces';
 
 export class Office {
 
-    private readonly office: IOffice;
+    private readonly _id: string;
+    private readonly number: number;
+    private readonly sectionNumber: number;
+    private readonly floorNumber: number;
+    private readonly houseNumber: number;
+    private readonly roomsAmount: number;
+    private readonly decorationType: string;
+    private readonly atBusinessComplex: boolean;
 
     constructor(options: IOffice) {
-        this.office = { ...options }
+        this._id = options._id;
+        this.number = options.number;
+        this.sectionNumber = options.sectionNumber;
+        this.floorNumber = options.floorNumber;
+        this.houseNumber = options.houseNumber;
+        this.roomsAmount = options.roomsAmount;
+        this.decorationType = options.decorationType;
+        this.atBusinessComplex = options.atBusinessComplex;
     }
 
     public computeCost(): number {
-        return (this.office.number * this.office.roomsAmount) /
-            (this.office.floorNumber * Math.sqrt(this.office.houseNumber + this.office.sectionNumber));
+        return (this.number * this.roomsAmount) /
+            (this.floorNumber * Math.sqrt(this.houseNumber + this.sectionNumber));
     }
 }
