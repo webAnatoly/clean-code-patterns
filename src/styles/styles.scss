@@ -1,0 +1,47 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'reset';
+@import 'variables';
+
+:root {
+    tab-size: 4; /* Set tab size to 4 characters wide */
+}
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit; // Все элементы будут наследовать box-sizing от html
+}
+html { box-sizing: border-box; }
+
+html, body {
+    font-family: $font-family-main;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+    font-size: 62.5%; // This defines what 1 rem is if user browser set default font-size 16px so 1rem === 10px
+    width: 100%;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    display: block;
+}
+
+body {
+    font-size: 1.6rem;
+    width: 144rem;
+    margin: auto;
+}
+
+input,
+input:focus {
+    outline: none;
+}
+
+::selection {
+    background-color: Highlight;
+    color: HighlightText;
+}
