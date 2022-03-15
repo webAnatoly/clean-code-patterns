@@ -45,3 +45,8 @@ input:focus {
     background-color: Highlight;
     color: HighlightText;
 }
+
+// Глобальные стили для "страниц"
+.g-page {
+    min-height: 100vh;
+}
