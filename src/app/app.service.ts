@@ -3,6 +3,12 @@ import { Director } from './objectCreator/director';
 import { FlatCreator } from './objectCreator/flat-creator';
 import { OfficeCreator } from './objectCreator/office-creator';
 import { GarageCreator } from './objectCreator/garage-creator';
+import {
+    IBaseObject,
+    IFlat,
+    IGarage,
+    IOffice,
+} from './objectCreator/objects.interfaces';
 
 @Injectable({
     providedIn: 'root',
@@ -68,6 +74,8 @@ export class AppService {
                 this.director.buildGarage({
                     _id: `garage_id_${i}`,
                     number: i,
+                    houseNumber: i,
+                    floorNumber: i,
                     sectionNumber: 1,
                     parkingNumber: i,
                     holdingCapacity: 12,
@@ -77,5 +85,10 @@ export class AppService {
             }
             localStorage.setItem('garage', JSON.stringify(flats));
         }
+    }
+
+    public getRealEstateObjects(key: 'string'): IBaseObject[] | IFlat[] | IOffice[] | IGarage[] {
+        const rawData = localStorage.getItem('flats');
+        return rawData ? JSON.parse(rawData) : [];
     }
 }

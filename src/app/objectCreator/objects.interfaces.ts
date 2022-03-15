@@ -2,19 +2,21 @@ export interface IBaseObject {
     _id: string,
     number: number,
     sectionNumber: number,
+    floorNumber: number,
+    houseNumber: number,
+    decorationType?: string,
+    area?: number,
+    date?: string,
+
 }
 
 export interface IFlat extends IBaseObject {
-    floorNumber: number,
-    houseNumber: number,
     complexMod: string,
     roomsAmount: number,
     decorationType: string,
 }
 
 export interface IOffice extends IBaseObject {
-    floorNumber: number,
-    houseNumber: number,
     roomsAmount: number,
     decorationType: string,
     atBusinessComplex: boolean,
@@ -34,9 +36,9 @@ export interface IGarage extends IBaseObject {
 export interface IObjectBuilder {
     reset(): void;
     produceBaseObject(options: IBaseObject): void;
-    produceFlat(options: IFlat): void;
-    produceOffice(options: IOffice): void;
-    produceGarage(options: IGarage): void;
+    produceFlat(options: IBaseObject | IFlat): void;
+    produceOffice(options: IBaseObject | IOffice): void;
+    produceGarage(options: IBaseObject | IGarage): void;
 }
 
 export enum MathConstants {

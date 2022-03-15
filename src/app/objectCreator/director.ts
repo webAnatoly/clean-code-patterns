@@ -31,17 +31,17 @@ export class Director {
         this.builder.produceBaseObject(options);
     }
 
-    public buildFlat(options: IFlat): void {
+    public buildFlat(options: IBaseObject | IFlat): void {
         this.builder.reset();
         this.builder.produceFlat(options);
     }
 
-    public buildOffice(options: IOffice): void {
+    public buildOffice(options: IBaseObject | IOffice): void {
         this.builder.reset();
         this.builder.produceOffice(options);
     }
 
-    public buildGarage(options: IGarage): void {
+    public buildGarage(options: IBaseObject | IGarage): void {
         this.builder.reset();
         this.builder.produceGarage(options);
         // тут еще могут быть шаги, модифицирующие объект и эти шаги должны быть прописаны в интерфейсе IObjectBuilder
