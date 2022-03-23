@@ -4,7 +4,9 @@ import {
     OnInit,
 } from '@angular/core';
 
-import { IBaseObject } from '../objectCreator/objects.interfaces';
+import { Flat } from '../objectCreator/flat';
+import { Office } from '../objectCreator/office';
+import { Garage } from '../objectCreator/garage';
 
 @Component({
     selector: 'app-list-objects',
@@ -22,9 +24,11 @@ export class ListObjectsComponent implements OnInit {
         'Вид отделки',
         'Цена',
     ];
-    @Input() realEstateObjects: any[] = [];
+    @Input() realEstateObjects: Flat[] | Office[] | Garage[] = [];
 
-    constructor() { }
+    constructor() {
+        console.log('test: ', this.realEstateObjects);
+    }
 
     ngOnInit(): void {
     }

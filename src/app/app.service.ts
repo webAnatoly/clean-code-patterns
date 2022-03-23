@@ -24,7 +24,7 @@ export class AppService {
 
     initObjects() {
 
-        // В реальном приложении данные для инициализации будут либо с сервера приходить. Либо из полей формы.
+        // В реальном приложении данные для инициализации будут либо с сервера приходить. Либо из полей формы, которую пользователь заполняет.
         // Тут я просто в цикле их создаю с рандомными значениями.
         if (!localStorage.getItem('flats')) {
             const flatObjectBuilder = new FlatCreator();
@@ -40,6 +40,7 @@ export class AppService {
                     complexMod: 'complexMod',
                     roomsAmount: 1,
                     decorationType: 'decoration type',
+                    area: 25,
                 });
                 flats.push(flatObjectBuilder.getProduct());
             }
@@ -49,7 +50,7 @@ export class AppService {
         if (!localStorage.getItem('office')) {
             const officeObjectBuilder = new OfficeCreator();
             this.director.setBuilder(officeObjectBuilder);
-            const flats = [];
+            const offices = [];
             for (let i = 10; i <= 20; i++) {
                 this.director.buildOffice({
                     _id: `office_id_${i}`,
@@ -60,16 +61,17 @@ export class AppService {
                     roomsAmount: i,
                     decorationType: 'decoration type',
                     atBusinessComplex: true,
+                    area: 35,
                 });
-                flats.push(officeObjectBuilder.getProduct());
+                offices.push(officeObjectBuilder.getProduct());
             }
-            localStorage.setItem('office', JSON.stringify(flats));
+            localStorage.setItem('office', JSON.stringify(offices));
         }
 
         if (!localStorage.getItem('garage')) {
             const garageObjectBuilder = new GarageCreator();
             this.director.setBuilder(garageObjectBuilder);
-            const flats = [];
+            const garages = [];
             for (let i = 10; i <= 20; i++) {
                 this.director.buildGarage({
                     _id: `garage_id_${i}`,
@@ -80,15 +82,16 @@ export class AppService {
                     parkingNumber: i,
                     holdingCapacity: 12,
                     withRepairPit: false,
+                    area: 8,
                 });
-                flats.push(garageObjectBuilder.getProduct());
+                garages.push(garageObjectBuilder.getProduct());
             }
-            localStorage.setItem('garage', JSON.stringify(flats));
+            localStorage.setItem('garage', JSON.stringify(garages));
         }
     }
 
-    public getRealEstateObjects(key: 'string'): IBaseObject[] | IFlat[] | IOffice[] | IGarage[] {
-        const rawData = localStorage.getItem('flats');
+    public getRealEstateObjects(key: string = 'flat'): IBaseObject[] | IFlat[] | IOffice[] | IGarage[] {
+        const rawData = localStorage.getItem(key);
         return rawData ? JSON.parse(rawData) : [];
     }
 }

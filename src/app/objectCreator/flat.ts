@@ -3,16 +3,18 @@ import {
 } from './objects.interfaces';
 import { MathConstants } from './objects.interfaces';
 
-export class Flat {
+export class Flat implements IFlat {
 
-    private readonly _id: string;
-    private readonly number: number;
-    private readonly sectionNumber: number;
-    private readonly floorNumber: number;
-    private readonly houseNumber: number;
-    private readonly complexMod: string;
-    private readonly roomsAmount: number;
-    private readonly decorationType: string;
+    public readonly _id: string;
+    public readonly number: number;
+    public readonly sectionNumber: number;
+    public readonly floorNumber: number;
+    public readonly houseNumber: number;
+    public readonly complexMod: string;
+    public readonly roomsAmount: number;
+    public readonly decorationType: string;
+    public readonly area: number;
+    public readonly date: string;
 
     constructor(options: IFlat) {
          this._id = options._id;
@@ -23,6 +25,8 @@ export class Flat {
          this.complexMod = options.complexMod;
          this.roomsAmount = options.roomsAmount;
          this.decorationType = options.decorationType;
+         this.area = options.area ?? -1;
+         this.date = options.date ?? '';
     }
 
     public computeCost(): number {

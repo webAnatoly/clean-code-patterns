@@ -1,12 +1,16 @@
 import { IGarage } from './objects.interfaces';
 
-export class Garage {
-    private readonly _id: string;
-    private readonly number: number;
-    private readonly sectionNumber: number;
-    private readonly parkingNumber: number;
-    private readonly holdingCapacity: number;
-    private readonly withRepairPit: boolean;
+export class Garage implements IGarage {
+    public readonly _id: string;
+    public readonly number: number;
+    public readonly sectionNumber: number;
+    public readonly parkingNumber: number;
+    public readonly holdingCapacity: number;
+    public readonly withRepairPit: boolean;
+    public readonly floorNumber: number;
+    public readonly houseNumber: number;
+    public readonly area: number;
+    public readonly date: string;
 
     constructor(options: IGarage) {
         this._id = options._id;
@@ -15,6 +19,10 @@ export class Garage {
         this.parkingNumber = options.parkingNumber;
         this.holdingCapacity = options.holdingCapacity;
         this.withRepairPit = options.withRepairPit;
+        this.floorNumber = options.floorNumber;
+        this.houseNumber = options.houseNumber;
+        this.area = options.area ?? -1;
+        this.date = options.date ?? '';
     }
 
     public computeCost(): number {

@@ -1,15 +1,17 @@
 import { IOffice } from './objects.interfaces';
 
-export class Office {
+export class Office implements IOffice {
 
-    private readonly _id: string;
-    private readonly number: number;
-    private readonly sectionNumber: number;
-    private readonly floorNumber: number;
-    private readonly houseNumber: number;
-    private readonly roomsAmount: number;
-    private readonly decorationType: string;
-    private readonly atBusinessComplex: boolean;
+    public readonly _id: string;
+    public readonly number: number;
+    public readonly sectionNumber: number;
+    public readonly floorNumber: number;
+    public readonly houseNumber: number;
+    public readonly roomsAmount: number;
+    public readonly decorationType: string;
+    public readonly atBusinessComplex: boolean;
+    public readonly area: number;
+    public readonly date: string;
 
     constructor(options: IOffice) {
         this._id = options._id;
@@ -20,6 +22,8 @@ export class Office {
         this.roomsAmount = options.roomsAmount;
         this.decorationType = options.decorationType;
         this.atBusinessComplex = options.atBusinessComplex;
+        this.area = options.area ?? -1;
+        this.date = options.date ?? '';
     }
 
     public computeCost(): number {
